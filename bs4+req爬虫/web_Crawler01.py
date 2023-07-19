@@ -1,4 +1,4 @@
-#抓取PTT电影版面的源码（HTML）
+#抓取PTT电影版面的源码（HTML）没有Cookie
 
 import bs4
 import urllib.request as req

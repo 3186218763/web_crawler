@@ -1,0 +1,17 @@
+#抓取 Medium.com 的文章资料
+#由于网页改版，可能不适用了
+import json
+import urllib.request as req
+url="https://medium.com/cdn-cgi/rum?"
+
+request_data=[{"operationName":"CollectionViewerEdge","variables":{"collectionId":"16ade7bc003e"},"query":"query CollectionViewerEdge($collectionId: ID!) {\n  collection(id: $collectionId) {\n    ... on Collection {\n      id\n      viewerEdge {\n        ...Collection_viewerEdge\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment Collection_viewerEdge on CollectionViewerEdge {\n  id\n  canEditOwnPosts\n  canEditPosts\n  isEditor\n  isFollowing\n  isMuting\n  isSubscribedToLetters\n  isSubscribedToMediumNewsletter\n  isSubscribedToEmails\n  isWriter\n  __typename\n}\n"},{"operationName":"CollectionViewerEdge","variables":{"collectionId":"71c99841f1ad"},"query":"query CollectionViewerEdge($collectionId: ID!) {\n  collection(id: $collectionId) {\n    ... on Collection {\n      id\n      viewerEdge {\n        ...Collection_viewerEdge\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment Collection_viewerEdge on CollectionViewerEdge {\n  id\n  canEditOwnPosts\n  canEditPosts\n  isEditor\n  isFollowing\n  isMuting\n  isSubscribedToLetters\n  isSubscribedToMediumNewsletter\n  isSubscribedToEmails\n  isWriter\n  __typename\n}\n"},{"operationName":"CollectionViewerEdge","variables":{"collectionId":"15f753907972"},"query":"query CollectionViewerEdge($collectionId: ID!) {\n  collection(id: $collectionId) {\n    ... on Collection {\n      id\n      viewerEdge {\n        ...Collection_viewerEdge\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment Collection_viewerEdge on CollectionViewerEdge {\n  id\n  canEditOwnPosts\n  canEditPosts\n  isEditor\n  isFollowing\n  isMuting\n  isSubscribedToLetters\n  isSubscribedToMediumNewsletter\n  isSubscribedToEmails\n  isWriter\n  __typename\n}\n"},{"operationName":"CollectionViewerEdge","variables":{"collectionId":"96fbb6f18c88"},"query":"query CollectionViewerEdge($collectionId: ID!) {\n  collection(id: $collectionId) {\n    ... on Collection {\n      id\n      viewerEdge {\n        ...Collection_viewerEdge\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment Collection_viewerEdge on CollectionViewerEdge {\n  id\n  canEditOwnPosts\n  canEditPosts\n  isEditor\n  isFollowing\n  isMuting\n  isSubscribedToLetters\n  isSubscribedToMediumNewsletter\n  isSubscribedToEmails\n  isWriter\n  __typename\n}\n"},{"operationName":"CollectionViewerEdge","variables":{"collectionId":"15fec98edcba"},"query":"query CollectionViewerEdge($collectionId: ID!) {\n  collection(id: $collectionId) {\n    ... on Collection {\n      id\n      viewerEdge {\n        ...Collection_viewerEdge\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment Collection_viewerEdge on CollectionViewerEdge {\n  id\n  canEditOwnPosts\n  canEditPosts\n  isEditor\n  isFollowing\n  isMuting\n  isSubscribedToLetters\n  isSubscribedToMediumNewsletter\n  isSubscribedToEmails\n  isWriter\n  __typename\n}\n"}]
+#request 物件
+request=req.Request(url, headers={
+    "Content-Type":"application/json",
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+},data=json.dumps(request_data))
+
+with req.urlopen(request) as response:
+    result=response.read()
+
+print(result)
